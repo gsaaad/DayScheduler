@@ -33,7 +33,7 @@
 
 ## Website
 
-- (URL)
+- https://gsaaad.github.io/DayScheduler/
 
 ## Feedback
 
