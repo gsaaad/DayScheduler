@@ -16,7 +16,7 @@
 
 ### Preview
 
-- ![Screenshot](URL)
+- ![Screenshot](./assets/images/Preview_Module5.png)
 
 ## Description
 
