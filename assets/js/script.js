@@ -2,11 +2,11 @@
 
 //get day and time
 var today = moment().format("MMM Do YY");
-// var hour = parseInt(moment().format("HH"));
+var hour = parseInt(moment().format("HH"));
 var rowEl = $(".row");
 var saveButton = $(".saveBtn");
 
-var hour = 12;
+// var hour = 12;
 
 //display day and time
 $("#currentDay").text(today);
