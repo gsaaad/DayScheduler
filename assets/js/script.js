@@ -2,19 +2,31 @@
 
 //get day and time
 var today = moment().format("MMM Do YY");
-var hour = parseInt(moment().format("HH"));
-// var hour = 17;
+// var hour = parseInt(moment().format("HH"));
+var rowEl = $(".row");
+var saveButton = $(".saveBtn");
+
+var hour = 12;
 
 //display day and time
 $("#currentDay").text(today);
 $("#currentTime").text(hour);
 
-var rowEl = $(".row");
 var localStorageEvents = localStorage.getItem("Events");
 if (localStorageEvents) {
   console.log("THERES EVENTS");
   localStorageEvents = JSON.parse(localStorageEvents);
   savedEvents = localStorageEvents;
+  for (let i = 0; i < savedEvents.length; i++) {
+    console.log(savedEvents[i].id);
+    var rowParagraph = $("#" + savedEvents[i].id).children("p");
+    console.log(rowParagraph);
+    if ($("#" + savedEvents[i].id)) {
+      $("#" + savedEvents[i].id)
+        .children("p")
+        .text(savedEvents[i].event);
+    }
+  }
 } else {
   console.log("NO EVENTS");
   var savedEvents = [{}];
@@ -72,5 +84,20 @@ rowEl.on("blur", "textarea", function () {
 
   // replace textarea with new content
   $(this).replaceWith(taskP);
+
   giveClasses();
+});
+
+saveButton.on("click", function () {
+  // console.log("clicked!");
+  // console.log($(this).prev().text());
+  var userEventText = $(this).prev().text();
+  // console.log($(this).parent().attr("id"));
+  var userEventId = $(this).parent().attr("id");
+  var userEventData = {
+    id: userEventId,
+    event: userEventText,
+  };
+  savedEvents.push(userEventData);
+  localStorage.setItem("Events", JSON.stringify(savedEvents));
 });
